@@ -1,6 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
+//screens
+import Home from "../screens/Home";
+import Stopwatch from "../screens/Stopwatch";
+import Profile from "../screens/Profile";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,12 +20,7 @@ const Nav = () => {
 					right: 30,
 					elevation: 0,
 					backgroundColor: "#c4c4c4",
-					opacity: 70,
 					borderRadius: 10,
-					height: 60,
-					shadowColor: "#000000",
-					shadowOpacity: 0.06,
-					shadowOffset: { width: 5, height: 5 },
 				},
 				tabBarLabelStyle: {
 					display: "none",
@@ -32,7 +31,7 @@ const Nav = () => {
 				name="Home"
 				component={Home}
 				options={{
-					tabBarIcon: () => <Icon name="home" size={32} />,
+					tabBarIcon: ({ focused }) => <Icon name="home" size={32} />,
 				}}
 			/>
 
@@ -40,15 +39,17 @@ const Nav = () => {
 				name="Watch"
 				component={Stopwatch}
 				options={{
-					tabBarIcon: () => <Icon name="watch" size={32} />,
+					tabBarIcon: ({ focused }) => (
+						<Icon name="watch" size={32} />
+					),
 				}}
 			/>
 
 			<Tab.Screen
-				name="Account"
-				component={Account}
+				name="Profile"
+				component={Profile}
 				options={{
-					tabBarIcon: () => <Icon name="account" size={32} />,
+					tabBarIcon: ({ focused }) => <Icon name="user" size={32} />,
 				}}
 			/>
 		</Tab.Navigator>
